@@ -10,18 +10,32 @@ export class CardFormComponent implements OnInit {
   cardForm = new FormGroup({
     name: new FormControl('', [
       Validators.required,
-      Validators.minLength(3),
-      Validators.maxLength(6),
+      Validators.minLength(2),
+      Validators.maxLength(28),
       // Validators.pattern(/\s/),
     ]),
-    cardNumber: new FormControl(''),
-    expiration: new FormControl(''),
-    securityCode: new FormControl(''),
+    cardNumber: new FormControl('', [
+      Validators.required,
+      Validators.minLength(16),
+      Validators.maxLength(16),
+    ]),
+    expiration: new FormControl('', [
+      Validators.required,
+      Validators.pattern(/^(0[1-9]|1[0-2])\/\d{2}$/),
+    ]),
+    securityCode: new FormControl('', [
+      Validators.required,
+      Validators.minLength(4),
+      Validators.maxLength(6),
+    ]),
   });
 
   constructor() {
     console.log(this.cardForm.get('name'));
   }
 
+  onSubmit() {
+    console.log('Form was submitted');
+  }
   ngOnInit() {}
 }
