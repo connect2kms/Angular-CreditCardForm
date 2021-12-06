@@ -14,6 +14,9 @@ export class CardFormComponent implements OnInit {
       Validators.maxLength(6),
       // Validators.pattern(/\s/),
     ]),
+    cardNumber: new FormControl(''),
+    expiration: new FormControl(''),
+    securityCode: new FormControl(''),
   });
 
   constructor() {
