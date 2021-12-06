@@ -4,11 +4,16 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 @Component({
   selector: 'app-card-form',
   templateUrl: './card-form.component.html',
-  styleUrls: ['./card-form.component.css']
+  styleUrls: ['./card-form.component.css'],
 })
 export class CardFormComponent implements OnInit {
   cardForm = new FormGroup({
-    name: new FormControl('', [Validators.required, Validators.minLength(3)])
+    name: new FormControl('', [
+      // Validators.required,
+      // Validators.minLength(3),
+      // Validators.maxLength(6),
+      Validators.pattern(/\s/),
+    ]),
   });
 
   constructor() {
